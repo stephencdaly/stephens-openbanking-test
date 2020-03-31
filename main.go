@@ -8,7 +8,7 @@ import (
 	"github.com/stephencdaly/stephens-openbanking-test/database"
 )
 
-func Main() error { 
+func Main() error {
 	db, err := database.NewDB(os.Getenv("DATABASE_URL"))
 	if err != nil {
 		return err
@@ -23,8 +23,9 @@ func Main() error {
 	}
 
 	api.Start(api.Config{
-		DB: db
-	})
+		DB: db})
+
+	return nil
 }
 
 func main() {

@@ -1,7 +1,6 @@
 package api
 
 import (
-	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -18,5 +17,5 @@ func Start(config Config) {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":8080"))
 }

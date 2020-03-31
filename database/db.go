@@ -8,16 +8,16 @@ import (
 	"github.com/golang-migrate/migrate"
 	"github.com/golang-migrate/migrate/database/postgres"
 	_ "github.com/golang-migrate/migrate/source/file"
+	_ "github.com/lib/pq"
 )
 
 type Charge struct {
-	ExternalId string `json:"payment_id"`
-	Amount int `json:"amount"`
-	Reference string `json:"reference"`
+	ExternalId  string `json:"payment_id"`
+	Amount      int    `json:"amount"`
+	Reference   string `json:"reference"`
 	Description string `json:"description"`
-	CreatedDate string `json:"created_date"`,
-	ReturnUrl string `json:"return_url"`,
-	Status string `json:"status"`
+	ReturnUrl   string `json:"return_url"`
+	Status      string `json:"status"`
 }
 
 type DB struct {
