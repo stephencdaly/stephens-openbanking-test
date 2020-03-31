@@ -1,11 +1,14 @@
 package main
 
-import(
+import (
+	"log"
+	"os"
 
-	"github.com/stephencdaly/stephens-open-banking-test/api"
+	"github.com/stephencdaly/stephens-openbanking-test/api"
+	"github.com/stephencdaly/stephens-openbanking-test/database"
 )
 
-func main() { 
+func Main() error { 
 	db, err := database.NewDB(os.Getenv("DATABASE_URL"))
 	if err != nil {
 		return err
@@ -19,5 +22,13 @@ func main() {
 		return err
 	}
 
-	api.Start()
+	api.Start(api.Config{
+		DB: db
+	})
+}
+
+func main() {
+	if err := Main(); err != nil {
+		log.Fatal(err)
+	}
 }
