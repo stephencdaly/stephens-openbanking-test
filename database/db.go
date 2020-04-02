@@ -55,7 +55,7 @@ func (db *DB) Init() error {
 		return err
 	}
 
-	defer m.Close()
+	// defer m.Close()
 	if err := m.Up(); err != migrate.ErrNoChange {
 		return err
 	}

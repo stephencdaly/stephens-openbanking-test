@@ -1,6 +1,7 @@
 package api
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/google/uuid"
@@ -33,8 +34,15 @@ func CreatePaymentHandler(db *database.DB) echo.HandlerFunc {
 			Status:      "created",
 		}
 
+		err = db.Ping()
+		if err != nil {
+			log.Print("Failed to ping db")
+			return err
+		}
+
 		err = db.InsertCharge(charge)
 		if err != nil {
+			log.Print("Failed to insert charge")
 			return err
 		}
 

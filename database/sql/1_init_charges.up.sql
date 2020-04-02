@@ -1,6 +1,6 @@
 CREATE TABLE charges (
   id serial primary key,
-  external_id char(26),
+  external_id char(36),
   amount bigint not null,
   reference varchar(255) not null,
   description varchar(255) not null,

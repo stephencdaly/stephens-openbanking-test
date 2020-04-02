@@ -22,6 +22,7 @@ func NewPaymentResponse(charge database.Charge) *PaymentResponse {
 		Description: charge.Description,
 		Amount:      charge.Amount,
 		NextURL:     fmt.Sprintf("https://localhost:8080/payment/%s", charge.ExternalId),
+		Status:      charge.Status,
 	}
 	return &response
 }

@@ -17,7 +17,7 @@ func Start(config Config) {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.POST("v1/api/payments", api.CreatePaymentHandler(config.DB))
+	e.POST("/v1/api/payments", api.CreatePaymentHandler(config.DB))
 
 	e.Logger.Fatal(e.Start(":8080"))
 }
