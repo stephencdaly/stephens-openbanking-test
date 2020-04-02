@@ -66,3 +66,22 @@ func (db *DB) Init() error {
 func (db *DB) Close() error {
 	return db.conn.Close()
 }
+
+func (db *DB) InsertCharge(charge Charge) error {
+	_, err = db.conn.Exec(`INSERT INTO CHARGES (
+		external_id,
+		amount,
+	  reference,
+		description, 
+		return_url,
+		status) 
+	VALUES ($1, $2, $3, $4, $5, $6)`,
+		charge.ExternalId,
+		charge.Amount,
+		charge.Reference,
+		charge.Description,
+		charge.ReturnUrl,
+		charge.Status)
+
+	return err
+}
