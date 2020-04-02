@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/stephencdaly/stephens-openbanking-test/api"
+	"github.com/stephencdaly/stephens-openbanking-test/http"
 	"github.com/stephencdaly/stephens-openbanking-test/database"
 )
 
@@ -22,7 +22,7 @@ func Main() error {
 		return err
 	}
 
-	api.Start(api.Config{
+	http.Start(http.Config{
 		DB: db})
 
 	return nil
