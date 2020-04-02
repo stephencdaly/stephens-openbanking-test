@@ -68,7 +68,7 @@ func (db *DB) Close() error {
 }
 
 func (db *DB) InsertCharge(charge Charge) error {
-	_, err = db.conn.Exec(`INSERT INTO CHARGES (
+	_, err := db.conn.Exec(`INSERT INTO CHARGES (
 		external_id,
 		amount,
 	  reference,

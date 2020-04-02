@@ -1,9 +1,10 @@
 package api
 
 import (
-	"fmt"
+	"net/http"
 
-	"github.com/labstack/echo"
+	"github.com/google/uuid"
+	"github.com/labstack/echo/v4"
 	"github.com/stephencdaly/stephens-openbanking-test/database"
 )
 
@@ -14,7 +15,7 @@ type createPaymentRequest struct {
 	ReturnURL   string `json:"return_url"`
 }
 
-func CreatePaymentHandler(db *database.DB) echo.HandlerFund {
+func CreatePaymentHandler(db *database.DB) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var request createPaymentRequest
 		err := c.Bind(&request)
@@ -37,7 +38,7 @@ func CreatePaymentHandler(db *database.DB) echo.HandlerFund {
 			return err
 		}
 
-		response := PaymentResponse(charge)
+		response := NewPaymentResponse(charge)
 		return c.JSON(http.StatusAccepted, response)
 	}
 }

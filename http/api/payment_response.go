@@ -15,7 +15,7 @@ type PaymentResponse struct {
 	Status      string `json:"status"`
 }
 
-func PaymentResponse(charge database.Charge) *PaymentResponse {
+func NewPaymentResponse(charge database.Charge) *PaymentResponse {
 	response := PaymentResponse{
 		PaymentID:   charge.ExternalId,
 		Reference:   charge.Reference,
